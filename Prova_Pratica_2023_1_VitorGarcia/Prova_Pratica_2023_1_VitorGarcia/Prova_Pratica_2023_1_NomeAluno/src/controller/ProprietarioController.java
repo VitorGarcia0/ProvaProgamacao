@@ -35,9 +35,9 @@ public class ProprietarioController {
 
 	private void validarCampos(Proprietario novoProprietario) throws CampoInvalidoException {
 		String mensagemValidacao = "";
-
+			
 		if (novoProprietario.getNomeCompleto() == null || novoProprietario.getNomeCompleto().trim().length() < 3) {
-			mensagemValidacao += "Nome invÃ¡lido \n";
+			mensagemValidacao += "Nome inválido \n";
 		}
 
 		if (novoProprietario.getCarros() == null) {
@@ -46,9 +46,13 @@ public class ProprietarioController {
 
 		if (novoProprietario.getCNH() == null || novoProprietario.getCNH().trim().length() < 11
 				|| novoProprietario.getCNH().trim().length() > 11) {
-			mensagemValidacao += "Informe um CNH com 11 dÃ­gitos: \n";
+			mensagemValidacao += "Informe um CNH com 11 dígitos: \n";
 		}
 
+		if(novoProprietario.getCarros == null || novoProprietario.getCarros.isEmpty() ) {
+			mensagemValidacao += "Informe algum carro para o usuário! "
+		}
+		
 		if (!mensagemValidacao.isEmpty()) {
 			throw new CampoInvalidoException(mensagemValidacao);
 		}

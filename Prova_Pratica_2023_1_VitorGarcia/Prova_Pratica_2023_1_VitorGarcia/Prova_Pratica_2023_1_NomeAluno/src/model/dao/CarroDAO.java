@@ -93,7 +93,7 @@ public class CarroDAO {
 		Connection conn = Banco.getConnection();
 
 		boolean atualizadoSucesso = false;
-		String sql = "UPDATE CARRO SET IDMONTADORA=?, ANO=?, MODELO=?, VALOR=?, IDPROPRIETARIO=? WHERE ID=?";
+		String sql = "UPDATE CARRO SET IDMONTADORA=?, ANO=?, MODELO=?, VALOR=?, PLACA=?, IDPROPRIETARIO=? WHERE ID=?";
 
 		try {
 			PreparedStatement query = conn.prepareStatement(sql);
@@ -101,8 +101,9 @@ public class CarroDAO {
 			query.setInt(2, c.getAno());
 			query.setString(3, c.getModelo());
 			query.setDouble(4, c.getValor());
-			query.setInt(5, c.getProprietario().getId());
-			query.setInt(6, c.getId());
+			query.setString(5, c.getString());
+			query.setInt(6, c.getProprietario().getId());
+			query.setInt(7, c.getId());
 
 			int codigoRetorno = query.executeUpdate();
 			if (codigoRetorno == Banco.CODIGO_RETORNO_SUCESSO) {
