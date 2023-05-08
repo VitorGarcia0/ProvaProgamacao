@@ -43,7 +43,7 @@ public class TelaCadastroProprietario {
 	private JButton btnAdicionar;
 	private JLabel lblTotalCarros;
 
-	private List<Carro> carrosDoProprietario = new ArrayList<>();
+	private List<Carro> carrosDoProprietario = new ArrayList<Carro>();
 
 	/**
 	 * Launch the application.
@@ -128,7 +128,8 @@ public class TelaCadastroProprietario {
 		});
 		btnSalvar.setBounds(421, 277, 114, 29);
 		frmCadastroProprietario.getContentPane().add(btnSalvar);
-
+		
+		// PREENCHENDO O CB DE CARROS COM A LISTA DE TODOS OS CARROS
 		CarroController carrosController = new CarroController();
 		List<Carro> listaCarros = carrosController.consultarTodos();
 
@@ -143,6 +144,7 @@ public class TelaCadastroProprietario {
 		frmCadastroProprietario.getContentPane().add(lblCarros);
 
 		// MASCARA CPF
+		// Add try and CATCH
 		mascaraCPF = new MaskFormatter("###.###.###-##");
 		mascaraCPF.setValueContainsLiteralCharacters(false);
 
@@ -163,6 +165,7 @@ public class TelaCadastroProprietario {
 				// BOTÃO DE +, fazer com que jogue para o botão txt de Total de Carros
 				carrosDoProprietario.add((Carro) cbCarros.getSelectedItem());
 				lblTotalCarros.setText("Total " + carrosDoProprietario.size());
+				// PROFESSOR mudou, colocou um JTextArea e vai mostrando os carros, a medida que voce adiciona
 
 			}
 		});
