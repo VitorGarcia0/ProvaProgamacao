@@ -1,6 +1,6 @@
 package controller;
 
-import model.CampoInvalidoException.CampoInvalidoException;
+import model.Exception.CampoInvalidoException;
 import model.bo.ProprietarioBO;
 import model.vo.Proprietario;
 
